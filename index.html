@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipment Information</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="container">
+
+    <div id="loading" class="message">
+      Loading equipment...
+    </div>
+
+    <div id="not-found" class="message hidden">
+      <h2>Equipment Not Found</h2>
+      <p>Please check the QR code or equipment ID.</p>
+    </div>
+
+    <section id="equipment-page" class="hidden">
+
+      <header class="equipment-header">
+        <div class="equipment-icon">⚕</div>
+
+        <div>
+          <p class="unit-label" id="location"></p>
+          <h1 id="equipment-name"></h1>
+          <p class="equipment-id" id="equipment-id"></p>
+        </div>
+      </header>
+
+      <div class="card">
+        <h2>Equipment Details</h2>
+
+        <div class="details-grid">
+          <div>
+            <span>Brand</span>
+            <strong id="brand"></strong>
+          </div>
+
+          <div>
+            <span>Model</span>
+            <strong id="model"></strong>
+          </div>
+
+          <div>
+            <span>Location</span>
+            <strong id="location-detail"></strong>
+          </div>
+
+          <div>
+            <span>Status</span>
+            <strong id="status"></strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Purpose</h2>
+        <p id="purpose"></p>
+      </div>
+
+      <div class="card">
+        <h2>Pre-use Check</h2>
+        <ul id="checks" class="checklist"></ul>
+      </div>
+
+      <div class="card">
+        <h2>Precautions</h2>
+        <ul id="precautions" class="bullet-list"></ul>
+      </div>
+
+      <div class="card">
+        <h2>Maintenance</h2>
+
+        <div class="maintenance">
+          <div>
+            <span>Last PM</span>
+            <strong id="last-pm"></strong>
+          </div>
+
+          <div>
+            <span>Next PM</span>
+            <strong id="next-pm"></strong>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>Equipment Information</p>
+        <small>Follow hospital policy and manufacturer's instructions.</small>
+      </footer>
+
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
