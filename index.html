@@ -3,100 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Equipment Information</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <main class="container">
+  <div class="container">
 
-    <div id="loading" class="message">
-      Loading equipment...
-    </div>
+    <div id="equipmentPage">
 
-    <div id="not-found" class="message hidden">
-      <h2>Equipment Not Found</h2>
-      <p>Please check the QR code or equipment ID.</p>
-    </div>
+      <div class="header">
 
-    <section id="equipment-page" class="hidden">
-
-      <header class="equipment-header">
-        <div class="equipment-icon">⚕</div>
+        <div class="equipment-icon">
+          ⚕
+        </div>
 
         <div>
-          <p class="unit-label" id="location"></p>
-          <h1 id="equipment-name"></h1>
-          <p class="equipment-id" id="equipment-id"></p>
+          <p class="label">HOSPITAL EQUIPMENT</p>
+
+          <h1 id="equipmentName">
+            Loading...
+          </h1>
+
+          <p id="equipmentId" class="equipment-id">
+          </p>
         </div>
-      </header>
+
+      </div>
+
 
       <div class="card">
+
         <h2>Equipment Details</h2>
 
-        <div class="details-grid">
-          <div>
+        <div class="details">
+
+          <div class="detail-item">
+            <span>Category</span>
+            <strong id="category">—</strong>
+          </div>
+
+          <div class="detail-item">
             <span>Brand</span>
-            <strong id="brand"></strong>
+            <strong id="brand">—</strong>
           </div>
 
-          <div>
+          <div class="detail-item">
             <span>Model</span>
-            <strong id="model"></strong>
+            <strong id="model">—</strong>
           </div>
 
-          <div>
+          <div class="detail-item">
+            <span>Asset Number</span>
+            <strong id="assetNumber">—</strong>
+          </div>
+
+          <div class="detail-item">
             <span>Location</span>
-            <strong id="location-detail"></strong>
+            <strong id="location">—</strong>
           </div>
 
-          <div>
+          <div class="detail-item">
             <span>Status</span>
-            <strong id="status"></strong>
+            <strong id="status">—</strong>
           </div>
+
         </div>
+
       </div>
 
-      <div class="card">
-        <h2>Purpose</h2>
-        <p id="purpose"></p>
+
+      <div class="footer">
+        Equipment Information System
       </div>
 
-      <div class="card">
-        <h2>Pre-use Check</h2>
-        <ul id="checks" class="checklist"></ul>
+    </div>
+
+
+    <div id="notFound" class="card not-found">
+
+      <div class="equipment-icon">
+        ⚠
       </div>
 
-      <div class="card">
-        <h2>Precautions</h2>
-        <ul id="precautions" class="bullet-list"></ul>
-      </div>
+      <h1>Equipment Not Found</h1>
 
-      <div class="card">
-        <h2>Maintenance</h2>
+      <p>
+        The equipment ID in this QR code could not be found.
+      </p>
 
-        <div class="maintenance">
-          <div>
-            <span>Last PM</span>
-            <strong id="last-pm"></strong>
-          </div>
+    </div>
 
-          <div>
-            <span>Next PM</span>
-            <strong id="next-pm"></strong>
-          </div>
-        </div>
-      </div>
+  </div>
 
-      <footer>
-        <p>Equipment Information</p>
-        <small>Follow hospital policy and manufacturer's instructions.</small>
-      </footer>
-
-    </section>
-
-  </main>
 
   <script src="app.js"></script>
 
