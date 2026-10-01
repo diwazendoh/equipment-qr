@@ -1,60 +1,39 @@
 async function loadEquipment() {
-
-  const equipmentPage =
-    document.getElementById("equipmentPage");
-
-  const notFound =
-    document.getElementById("notFound");
+  const equipmentPage = document.getElementById("equipmentPage");
+  const notFound = document.getElementById("notFound");
 
   try {
-
-    const response =
-      await fetch("equipment.json");
+    const response = await fetch("./equipment.json");
 
     if (!response.ok) {
-      throw new Error("Unable to load equipment database.");
+      throw new Error("Could not load equipment.json");
     }
 
-    const equipmentData =
-      await response.json();
+    const equipmentData = await response.json();
 
+    const params = new URLSearchParams(window.location.search);
+    const equipmentId = params.get("id");
 
-    // Get equipment ID from QR URL
-    const params =
-      new URLSearchParams(window.location.search);
+    console.log("Equipment ID:", equipmentId);
+    console.log("Equipment data:", equipmentData);
 
-    const equipmentId =
-      params.get("id");
-
-
-    // No ID provided
     if (!equipmentId) {
-
       equipmentPage.style.display = "none";
       notFound.style.display = "block";
-
       return;
     }
 
+    const equipment = equipmentData.find(
+      item => item.id.trim().toLowerCase() ===
+              equipmentId.trim().toLowerCase()
+    );
 
-    // Find equipment
-    const equipment =
-      equipmentData.find(
-        item => item.id === equipmentId
-      );
-
-
-    // Equipment not found
     if (!equipment) {
-
       equipmentPage.style.display = "none";
       notFound.style.display = "block";
-
       return;
     }
 
-
-    // Display equipment
     document.getElementById("equipmentName").textContent =
       equipment.name || "—";
 
@@ -79,21 +58,15 @@ async function loadEquipment() {
     document.getElementById("status").textContent =
       equipment.status || "—";
 
-
     equipmentPage.style.display = "block";
     notFound.style.display = "none";
 
-
   } catch (error) {
-
-    console.error(error);
+    console.error("Error:", error);
 
     equipmentPage.style.display = "none";
     notFound.style.display = "block";
-
   }
-
 }
-
 
 loadEquipment();
