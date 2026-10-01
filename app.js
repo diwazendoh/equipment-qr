@@ -1,95 +1,99 @@
 async function loadEquipment() {
 
-  const params = new URLSearchParams(window.location.search);
-  const equipmentId = params.get("id");
+  const equipmentPage =
+    document.getElementById("equipmentPage");
 
-  const loading = document.getElementById("loading");
-  const notFound = document.getElementById("not-found");
-  const equipmentPage = document.getElementById("equipment-page");
-
-  if (!equipmentId) {
-    loading.classList.add("hidden");
-    notFound.classList.remove("hidden");
-    return;
-  }
+  const notFound =
+    document.getElementById("notFound");
 
   try {
 
-    const response = await fetch("equipment.json");
+    const response =
+      await fetch("equipment.json");
 
     if (!response.ok) {
-      throw new Error("Unable to load equipment data.");
+      throw new Error("Unable to load equipment database.");
     }
 
-    const equipmentList = await response.json();
+    const equipmentData =
+      await response.json();
 
-    const equipment = equipmentList.find(
-      item => item.id.toLowerCase() === equipmentId.toLowerCase()
-    );
 
-    loading.classList.add("hidden");
+    // Get equipment ID from QR URL
+    const params =
+      new URLSearchParams(window.location.search);
 
-    if (!equipment) {
-      notFound.classList.remove("hidden");
+    const equipmentId =
+      params.get("id");
+
+
+    // No ID provided
+    if (!equipmentId) {
+
+      equipmentPage.style.display = "none";
+      notFound.style.display = "block";
+
       return;
     }
 
-    document.title = `${equipment.name} — ${equipment.id}`;
 
-    document.getElementById("equipment-name").textContent = equipment.name;
-    document.getElementById("equipment-id").textContent = equipment.id;
-    document.getElementById("location").textContent = equipment.location;
+    // Find equipment
+    const equipment =
+      equipmentData.find(
+        item => item.id === equipmentId
+      );
 
-    document.getElementById("brand").textContent = equipment.brand || "—";
-    document.getElementById("model").textContent = equipment.model || "—";
-    document.getElementById("location-detail").textContent = equipment.location || "—";
-    document.getElementById("status").textContent = equipment.status || "—";
 
-    document.getElementById("purpose").textContent =
-      equipment.purpose || "—";
+    // Equipment not found
+    if (!equipment) {
 
-    const checks = document.getElementById("checks");
+      equipmentPage.style.display = "none";
+      notFound.style.display = "block";
 
-    checks.innerHTML = "";
+      return;
+    }
 
-    equipment.checks.forEach(check => {
 
-      const li = document.createElement("li");
-      li.textContent = check;
+    // Display equipment
+    document.getElementById("equipmentName").textContent =
+      equipment.name || "—";
 
-      checks.appendChild(li);
+    document.getElementById("equipmentId").textContent =
+      equipment.id || "—";
 
-    });
+    document.getElementById("category").textContent =
+      equipment.category || "—";
 
-    const precautions = document.getElementById("precautions");
+    document.getElementById("brand").textContent =
+      equipment.brand || "—";
 
-    precautions.innerHTML = "";
+    document.getElementById("model").textContent =
+      equipment.model || "—";
 
-    equipment.precautions.forEach(item => {
+    document.getElementById("assetNumber").textContent =
+      equipment.assetNumber || "—";
 
-      const li = document.createElement("li");
-      li.textContent = item;
+    document.getElementById("location").textContent =
+      equipment.location || "—";
 
-      precautions.appendChild(li);
+    document.getElementById("status").textContent =
+      equipment.status || "—";
 
-    });
 
-    document.getElementById("last-pm").textContent =
-      equipment.lastPM || "—";
+    equipmentPage.style.display = "block";
+    notFound.style.display = "none";
 
-    document.getElementById("next-pm").textContent =
-      equipment.nextPM || "—";
-
-    equipmentPage.classList.remove("hidden");
 
   } catch (error) {
 
     console.error(error);
 
-    loading.classList.add("hidden");
-    notFound.classList.remove("hidden");
+    equipmentPage.style.display = "none";
+    notFound.style.display = "block";
 
   }
+
 }
+
 
 loadEquipment();
