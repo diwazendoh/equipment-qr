@@ -1,0 +1,71 @@
+[
+  {
+    "id": "CCU-001",
+    "name": "Cardiac Monitor",
+    "brand": "Philips",
+    "model": "IntelliVue MX450",
+    "location": "CCU",
+    "status": "In Service",
+    "purpose": "Continuous monitoring of ECG and vital signs.",
+    "checks": [
+      "Check power supply",
+      "Inspect ECG cable",
+      "Check SpO₂ probe",
+      "Check NIBP cuff",
+      "Verify alarm function"
+    ],
+    "precautions": [
+      "Follow manufacturer's instructions",
+      "Verify appropriate alarm settings",
+      "Report equipment malfunction according to hospital policy"
+    ],
+    "lastPM": "—",
+    "nextPM": "—"
+  },
+  {
+    "id": "CCU-002",
+    "name": "Infusion Pump",
+    "brand": "B. Braun",
+    "model": "Infusomat",
+    "location": "CCU",
+    "status": "In Service",
+    "purpose": "Controlled administration of intravenous fluids and medications.",
+    "checks": [
+      "Check power supply",
+      "Inspect pump and tubing pathway",
+      "Verify alarm function",
+      "Check display",
+      "Confirm accessories are available"
+    ],
+    "precautions": [
+      "Verify prescribed infusion rate before starting",
+      "Ensure tubing is properly installed",
+      "Follow manufacturer's instructions"
+    ],
+    "lastPM": "—",
+    "nextPM": "—"
+  },
+  {
+    "id": "CCU-003",
+    "name": "Defibrillator",
+    "brand": "ZOLL",
+    "model": "R Series",
+    "location": "CCU",
+    "status": "In Service",
+    "purpose": "Provides defibrillation, synchronized cardioversion, and cardiac monitoring.",
+    "checks": [
+      "Check power and battery",
+      "Verify self-test status",
+      "Check defibrillation pads",
+      "Inspect ECG cable",
+      "Verify required accessories"
+    ],
+    "precautions": [
+      "Follow hospital resuscitation protocol",
+      "Verify equipment readiness according to unit policy",
+      "Follow manufacturer's instructions"
+    ],
+    "lastPM": "—",
+    "nextPM": "—"
+  }
+]
